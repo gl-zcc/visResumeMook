@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import './index.less';
 import { useHistory } from 'react-router';
-import Logo from '../../assets/logo.png';
+import Logo from '@assets/logo.png';
 import { shell } from 'electron';
 import { ROUTER_ENTRY, ROUTER_KEY } from '@common/constants/router';
 import { isHttpOrHttpsUrl } from '@common/utils/router';
