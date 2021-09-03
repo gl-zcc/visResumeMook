@@ -1,5 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -26,6 +27,7 @@ module.exports = {
             options: {
               name: '[name]_[hash].[ext]',
               outputPath: 'images/',
+              esModule: false
             },
           },
         ],

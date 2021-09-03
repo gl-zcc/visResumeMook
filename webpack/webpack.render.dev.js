@@ -5,7 +5,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const devConfig = {
   mode: 'development',
-  // 👇 追加这段代码，关于Loader与Plugin了解可以去看彩蛋篇
+  entry: {
+    // 👇 对应渲染进程的 app.tsx 入口文件
+    index: path.resolve(__dirname, '../app/renderer/app.tsx'),
+  },
+  output: {
+    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, '../dist'),
+  },
+  target: 'electron-renderer',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: path.join(__dirname, '../dist'),
+    compress: true,
+    host: '127.0.0.1', // webpack-dev-server启动时要指定ip，不能直接通过localhost启动，不指定会报错
+    port: 7001, // 启动端口为 7001 的服务
+    hot: true,
+  },
   module: {
     rules: [
       {
@@ -30,23 +46,6 @@ const devConfig = {
         ],
       },
     ],
-  },
-  entry: {
-    // 👇 对应渲染进程的 app.jsx 入口文件
-    index: path.resolve(__dirname, '../app/renderer/app.tsx'),
-  },
-  output: {
-    filename: '[name].[hash].js',
-    path: path.resolve(__dirname, '../dist'),
-  },
-  target: 'electron-renderer',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, '../dist'),
-    compress: true,
-    host: '127.0.0.1', // webpack-dev-server启动时要指定ip，不能直接通过localhost启动，不指定会报错
-    port: 7001, // 启动端口为 7001 的服务
-    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
