@@ -14,7 +14,7 @@
    const height = document.body.clientHeight;
    const [addToolbarList, setAddToolbarList] = useState<TSResume.SliderItem[]>([]);
    const [unAddToolbarList, setUnAddToolbarList] = useState<TSResume.SliderItem[]>([]);
- 
+
    useEffect(() => {
      if (RESUME_TOOLBAR_LIST.length > 0) {
        let _addToolbarList: TSResume.SliderItem[] = [];
